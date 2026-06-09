@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(express.json());
 
-// This mimics the login request the game sends
-app.post('/api/login', (req, res) => {
-    res.json({ status: "success", username: "ReciumPlayer" });
+app.get('/', (req, res) => {
+  res.send('ReciumRoom Server is Online!');
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
